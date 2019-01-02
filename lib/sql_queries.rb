@@ -9,7 +9,8 @@
 def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_name
 "SELECT title, sum(amount)
 FROM pledges
-  INNER JOIN projects on project.id = pledges.project_id
+  INNER JOIN projects
+    ON projects.id = pledges.project_id
 GROUP BY title
 ORDER by title"
 end
