@@ -16,11 +16,21 @@ ORDER by title"
 end
 
 def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_name
-"Write your SQL query Here"
+  "SELECT name, sum(amount)
+  FROM pledges
+    INNER JOIN users
+      ON user.id = pledges.project_id
+  GROUP BY user
+  ORDER by user"
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
-"Write your SQL query Here"
+"SELECT title, CAST funding_goal-sum(amount) as amount_over_goal
+  FROM pledges
+    INNER JOIN projects
+    ON projects.id = pledges.project_id
+    GROUP BY title
+    ORDER by title"
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_amount_and_users_name
