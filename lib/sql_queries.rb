@@ -20,12 +20,12 @@ def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_
   FROM pledges
     INNER JOIN users
       ON users.id = pledges.user_id
-  GROUP BY user
-  ORDER by user"
+  GROUP BY name
+  ORDER by name"
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
-"SELECT title, CAST funding_goal-sum(amount) as amount_over_goal
+"SELECT title, funding_goal-sum(amount)
   FROM pledges
     INNER JOIN projects
     ON projects.id = pledges.project_id
